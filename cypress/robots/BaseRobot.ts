@@ -146,6 +146,12 @@ export class BaseHands {
     return this;
   }
 
+  clickOnContainElement(element : string){
+    cy.contains(element).click({force : true})
+    return this;
+  }
+  
+
   doubleClickAndDragOnAgGrid(rowId: string, colId: string) {
     cy.get(`[row-id=${rowId}]`)
       .find(`[col-id=${colId}]`)
@@ -157,6 +163,17 @@ export class BaseHands {
 
   clickOnDomElement(dom: string) {
     cy.get(dom).click();
+    return this;
+  }
+
+  clickOnDomElementWithIndex(dom:string,index:number)
+  {
+    cy.get(dom).eq(index).click();
+    return this;
+  }
+
+  clickOnDomElementWithText(dom: string,text:string) {
+    cy.get(dom).contains(text).click();
     return this;
   }
 
